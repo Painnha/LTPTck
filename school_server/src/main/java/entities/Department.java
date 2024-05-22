@@ -19,7 +19,8 @@ import jakarta.persistence.Table;
 @Table(name = "Department")
 @NamedQueries({ 
 	@NamedQuery(name = "Department.findAll", query = "SELECT d FROM Department d"),
-	@NamedQuery(name = "Department.countCoursesByDepartment", query = "SELECT d.id, count(c) as noOfCourse FROM Department d INNER JOIN d.courses c GROUP BY d.id ORDER BY noOfCourse"), })
+	@NamedQuery(name = "Department.countCoursesByDepartment", query = "SELECT d.id, count(c) as noOfCourse FROM Department d INNER JOIN d.courses c GROUP BY d.id ORDER BY noOfCourse"),
+    @NamedQuery(name = "Department.findBudgetGreaterThan", query = "SELECT d FROM Department d WHERE d.budget > :budget AND d.startDate < :startDate"),})
 public class Department implements Serializable {
 	private static final long serialVersionUID = -1098804175860408965L;
 	@Id
